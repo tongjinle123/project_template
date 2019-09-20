@@ -1,35 +1,36 @@
-from .base_class import BaseClass
+from .base import Base
 from .base_config import ConfigDict
-from torch.utils.data import Dataset, DataLoader
+from src.utils import Vocab
 
 
-class BaseParser(BaseClass):
+class BaseParser(Base):
+    """
+    base class for parser,
+    """
     def __init__(self, config):
-        super(BaseParser, self).__init__()
-        self.config = config
+        super(BaseParser, self).__init__(config)
+        self._init_vocab()
 
     @classmethod
     def load_default_config(cls) -> ConfigDict:
-        config = ConfigDict()
-        config.add(example_parser_config='example_parser_config')
+        config = ConfigDict(
+            vocab_path=None
+        )
         return config
 
-    def parse(self):
-        raise NotImplementedError
+    @Base.log
+    def _init_vocab(self):
+        self.vocab = Vocab()
+        self.vocab.load(self.config.vocab_path)
 
-    def build_dataset(self, set):
-        raise NotImplementedError
+    def parse_train(self):
+        pass
 
-    def build_iters(self):
-        raise NotImplementedError
+    def parse_test(self):
+        pass
 
-    @property
-    def collate_fn(self):
-        def collate_fn(batch):
-            return batch
-        return collate_fn
+    def parse_predump(self):
+        pass
 
-
-class Loader(DataLoader):
-    def __init__(self, *args, **kwargs, ):
-        super(Loader, self).__init__(args, kwargs)
+    def parse_predump_train(self):
+        pass
