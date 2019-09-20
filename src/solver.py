@@ -73,11 +73,6 @@ class Solver(Base):
         # TODO build
 
     @Base.log
-    def _init_model(self):
-        self.model = init_module(Model, self.config.model_name)
-        # TODO init model from checkpoint
-
-    @Base.log
     def _init_trainer(self):
         assert self.experiment is not None
         self.trainer = Trainer(
