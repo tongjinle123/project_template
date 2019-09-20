@@ -1,6 +1,5 @@
-## AutoMasterQA
-
-##### project one for kaikeba senior nlp engineer course
+Project Template
+##### my custom project template 
 
 ##### the framework of this project is highly depend on the :  [pytorch-lightning](https://github.com/williamFalcon/pytorch-lightning) and the code is organized as [my own templete](https://github.com/tongjinle123/project_template)
 
