@@ -12,8 +12,8 @@ class Base:
     @classmethod
     def log(self, func):
         def wrapper(*args, **kwargs):
-            print(f'/n executing: {func.__name__}/n')
-            func(args, kwargs)
+            print(f'executing: {func.__name__}\n')
+            func(*args, **kwargs)
         return wrapper
 
     @classmethod
