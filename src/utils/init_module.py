@@ -5,7 +5,7 @@ def init_module(Module, module_name, change_args=None):
     if module_name is None:
         print(f'None for {Module.__name__}.')
         return None
-    module = getattr(module_name, Module)
+    module = getattr(Module, module_name)
     config = module.load_default_config()
     if change_args is not None:
         change_config = ConfigDict()
